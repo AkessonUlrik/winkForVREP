@@ -17,6 +17,9 @@ int main(){
     if (clientID!=-1){
         printf("Connection to remote API server successful\n");
         remoteClientExitStatus = remoteClient(clientID);
+        if(remoteClientExitStatus == 1){
+            printf("Connection to simulation stoped, shuting down.\n");
+        }
     }
     else{
         printf("Connection failed!\nShutting down!\n");
@@ -26,5 +29,8 @@ int main(){
 
 
 char remoteClient(int clientID){
+    while(simxGetConnectionId(clientID) != -1){
 
+    }
+    return 1;
 }
